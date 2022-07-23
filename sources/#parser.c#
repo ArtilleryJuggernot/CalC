@@ -1,0 +1,54 @@
+#include		"calculator.h"
+
+int			is_parsable(char *str)
+{
+  int check;
+  char acceptable[17] = {'0','1','2','3','4','5','6','7','8','9','.','+','-','/','*','%',' '};
+  int j = 0;
+  
+  for (int i = 0; i != strlen(str); i++)
+    {
+      check = 0;
+      j = 0;
+      while(check != 1 && j != 17)
+	check = (str[i] == acceptable[j++]) ? 1 : 0;
+      if (check == 0)
+	return 0;
+    }
+  return 1;
+}
+
+int			parse_nb(t_operation add, long nb)
+{
+  
+}  
+
+t_operation		*parse_operation(char *str)
+{
+  t_operation		*first = add_elem();
+  t_operation		*current = first;
+
+  if (!is_parsable(str))
+    return NULL;
+  printf("Parsable\n");
+  for (int i = 0; i != strlen(str); i++)
+    {
+      parse_nb(current);
+      
+    }
+  return NULL;  
+}
+
+t_operation		*add_elem()
+{
+  t_operation		*elem = malloc(sizeof(*elem));
+
+  elem->prev = prev;
+  elem->next = NULL;
+  elem->number = 0;
+  elem->p_operator = 0;
+  elem->n_operator = 0;
+  if (elem->prev != NULL)
+    elem->p_operator = elem->prev->n_operator;
+  return elem;
+}
